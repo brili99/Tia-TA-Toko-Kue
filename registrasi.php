@@ -11,12 +11,12 @@ if (
     require_once __DIR__ . "/db.php";
     $nama = $db->real_escape_string($_POST['nama']);
     $username = $db->real_escape_string($_POST['username']);
-    $password = $db->real_escape_string($_POST['password']);
+    $password = md5($db->real_escape_string($_POST['password']));
     $no_hp = $db->real_escape_string($_POST['no_hp']);
     $email = $db->real_escape_string($_POST['email']);
     $alamat = $db->real_escape_string($_POST['alamat']);
 
-    $sql = "INSERT INTO user_pelanggan (username, nama, password, no_hp, email, alamat) VALUES ('$username','$nama',MD5('$password'),'$no_hp','$email','$alamat')";
+    $sql = "INSERT INTO user_pelanggan (username, nama, password, no_hp, email, alamat) VALUES ('$username','$nama','$password','$no_hp','$email','$alamat')";
     if ($conn->query($sql) === TRUE) {
         header('Location: /login.php');
         die();

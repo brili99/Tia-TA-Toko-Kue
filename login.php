@@ -1,13 +1,24 @@
 <?php
+$is_login = false;
+$is_login_success = false;
 if (
     isset($_POST['username']) &&
     isset($_POST['password'])
 ) {
+    $is_login = true;
     require_once __DIR__ . "/db.php";
     $username = $db->real_escape_string($_POST['username']);
-    $password = $db->real_escape_string($_POST['password']);
+    $password = md5($db->real_escape_string($_POST['password']));
 
+    $sql = "SELECT id FROM user_pelanggan WHERE username = '$username' AND password = '$password'";
+    $result = $conn->query($sql);
+    $is_login_success = $result->num_rows == 1;
     $db->close();
+
+    if ($is_login_success) {
+        header('Location: /');
+        die();
+    }
 }
 ?>
 <!doctype html>
@@ -42,26 +53,16 @@ if (
                 <div class="col-lg-12">
                     <button type="submit" class="btn btn-primary w-100">Login</button>
                 </div>
+                <?php
+                if ($is_login && !$is_login_success) {
+                    echo "<div class=\"col-lg-12\"><div class=\"alert alert-danger mt-3\" role=\"alert\">Salah user atau password</div></div>";
+                }
+                ?>
             </form>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        $(function() {
-            $("#formRegistrasi").on("submit", function(event) {
-                if ($('#inputPassword').val() != $('#inputPasswordConfirm').val()) {
-                    event.preventDefault();
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Invalid data',
-                        text: 'Mohon isi konfirmasi password dengan benar'
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>

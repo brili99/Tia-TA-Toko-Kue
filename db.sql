@@ -15,4 +15,12 @@ CREATE TABLE user_pelanggan (
 
 INSERT INTO user_pelanggan (username, nama, password, no_hp, email, alamat) VALUES ('dummy','dummy user',MD5('dummy'),'0','dummy@dummy.dummy','');
 
-CREATE TABLE 
+CREATE TABLE produk (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nama TEXT NOT NULL,
+    harga INT NOT NULL,
+    path_gambar TEXT NOT NULL,
+    keterangan TEXT
+);
+
+INSERT INTO produk (nama, harga, path_gambar, keterangan) VALUES ('dummy produk','123','/img/dummy produk.jpg','dummy produk');
