@@ -24,3 +24,4 @@ CREATE TABLE produk (
 );
 
 INSERT INTO produk (nama, harga, path_gambar, keterangan) VALUES ('dummy produk','123','/img/dummy produk.jpg','dummy produk');
+

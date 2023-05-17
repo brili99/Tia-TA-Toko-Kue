@@ -17,7 +17,7 @@ if (
     $alamat = $db->real_escape_string($_POST['alamat']);
 
     $sql = "INSERT INTO user_pelanggan (username, nama, password, no_hp, email, alamat) VALUES ('$username','$nama','$password','$no_hp','$email','$alamat')";
-    if ($conn->query($sql) === TRUE) {
+    if ($db->query($sql) === TRUE) {
         header('Location: /login.php');
         die();
     } else {

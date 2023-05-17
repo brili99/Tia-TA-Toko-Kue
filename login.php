@@ -11,11 +11,13 @@ if (
     $password = md5($db->real_escape_string($_POST['password']));
 
     $sql = "SELECT id FROM user_pelanggan WHERE username = '$username' AND password = '$password'";
-    $result = $conn->query($sql);
+    $result = $db->query($sql);
     $is_login_success = $result->num_rows == 1;
     $db->close();
 
     if ($is_login_success) {
+        session_start();
+        $_SESSION['username'] = $username;
         header('Location: /');
         die();
     }
