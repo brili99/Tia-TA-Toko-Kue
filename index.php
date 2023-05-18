@@ -39,8 +39,8 @@ if (!isset($_SESSION['username'])) {
 
 <body>
     <?php include "navtop.php"; ?>
-    <div class="container mt-3 shadow rounded p-1 bg-body">
-        <div id="carouselHead" class="carousel slide mb-1">
+    <div class="container mt-3 shadow rounded bg-body p-1 mb-2">
+        <div id="carouselHead" class="carousel slide">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselHead" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselHead" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -66,9 +66,11 @@ if (!isset($_SESSION['username'])) {
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+    </div>
+    <div class="container p-1">
         <div class="row">
             <div class="col">
-                <div class="m-1 p-3 text-center border rounded bg-body-tertiary">
+                <div class="m-1 p-3 text-center border rounded bg-body-tertiary shadow">
                     <div class="fs-4 fw-semibold">JAM KERJA</div>
                     <hr>
                     <div class="fs-5">Senin => Jumat : 09:00 - 16:00</div>
@@ -76,7 +78,7 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </div>
             <div class="col">
-                <div class="m-1 p-3 text-center border rounded bg-body-tertiary">
+                <div class="m-1 p-3 text-center border rounded bg-body-tertiary shadow">
                     <div class="fs-4 fw-semibold">TENTANG KAMI</div>
                     <hr>
                     <div class="fs-5"><a href="#">Profil Perusahaan</a></div>
@@ -84,7 +86,7 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </div>
             <div class="col">
-                <div class="m-1 p-3 text-center border rounded bg-body-tertiary">
+                <div class="m-1 p-3 text-center border rounded bg-body-tertiary shadow">
                     <div class="fs-4 fw-semibold">HUBUNGI KAMI</div>
                     <hr>
                     <div class="fs-5">Tia</div>
